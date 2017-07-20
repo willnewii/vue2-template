@@ -1,0 +1,27 @@
+@import "./px2rem";
+
+html, body, #app, .page {
+  height: 100%;
+}
+
+html, body, #app, .page, pre {
+  margin: 0;
+}
+
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #FFFFFF;
+}
+
+pre {
+  white-space: pre-line;
+  word-wrap: break-word;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  transition: all .45s cubic-bezier(.23, 1, .32, 1);
+}
