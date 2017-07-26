@@ -1,6 +1,6 @@
 import EventBus from './EventBus'
 import * as Constants from './constants'
 import mixins from './mixins'
-import API from './request/API'
+import Request from './request/Request'
 
-export {EventBus, Constants, API, mixins};
+export {EventBus, Constants, Request, mixins};

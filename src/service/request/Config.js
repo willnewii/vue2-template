@@ -33,13 +33,14 @@ export default {
     // “responseType”表示服务器将响应的数据类型
     // 包括 'arraybuffer', 'blob', 'document', 'json', 'text', 'stream'
     responseType: 'json',
-    // `onUploadProgress`允许处理上传的进度事件
-    onUploadProgress: function (progressEvent) {
-    },
-    // `onDownloadProgress`允许处理下载的进度事件
-    onDownloadProgress: function (progressEvent) {
-        // Do whatever you want with the native progress event
-    },
+    //打开会多一次 options请求
+    /*    // `onUploadProgress`允许处理上传的进度事件
+        onUploadProgress: function (progressEvent) {
+        },
+        // `onDownloadProgress`允许处理下载的进度事件
+        onDownloadProgress: function (progressEvent) {
+            // Do whatever you want with the native progress event
+        },*/
     maxContentLength: 2000,
     // `validateStatus`定义是否解析或拒绝给定的promise
     validateStatus: function (status) {

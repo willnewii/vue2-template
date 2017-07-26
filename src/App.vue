@@ -8,11 +8,13 @@
 </template>
 
 <script>
-    import {EventBus, Constants} from  './service/index';
+    import {EventBus, Constants, Request} from './service/index';
+
+    let request;
 
     export default {
         name: 'app',
-        data(){
+        data() {
             return {
                 open: false,
                 docked: false,
@@ -29,17 +31,20 @@
                 }
             }
         },
-        created(){
+        created() {
             EventBus.$on(Constants.EventBus.showToast, value => {
                 this.showMessage(value);
             });
 
-            EventBus.$on(Constants.EventBus.toggleDrawer, value => {
-                this.open = !this.open;
-            });
+            this.getdata();
         },
         methods: {
-            showMessage(value){
+            getdata() {
+                request = new Request().get('https://anxinmuying.applinzi.com/Public/demo/?service=Album.GetSimpleList', null, (result) => {
+                    console.log(result);
+                })
+            },
+            showMessage(value) {
                 this.toast = true;
                 this.toast_message = value.message;
 
