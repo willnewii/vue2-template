@@ -8,27 +8,20 @@
 </template>
 
 <script>
-    import {EventBus, Constants, Request} from './service/index';
-
-    let request;
+    import {EventBus, Constants} from './service/index';
+    import mixins_base from './mixins/mixins-base'
+    import mixins_request from './mixins/mixins-request'
 
     export default {
         name: 'app',
+        mixins: [mixins_base, mixins_request],
         data() {
             return {
                 open: false,
                 docked: false,
                 toast: false,
                 toast_message: '',
-                toastTimer: null,
-                musicPopup: false,
-                music: {
-                    title: '',
-                    dataUrl: '',
-                    coverImgUrl: '',
-                    seek: 0,
-                    duration: 1
-                }
+                toastTimer: null
             }
         },
         created() {
@@ -36,13 +29,12 @@
                 this.showMessage(value);
             });
 
-            this.getdata();
+//            this.getdata();
         },
         methods: {
             getdata() {
-                request = new Request().get('https://anxinmuying.applinzi.com/Public/demo/?service=Album.GetSimpleList', null, (result) => {
-                    console.log(result);
-                })
+                this.doRequest(Constants.method.test, null, (result) => {
+                });
             },
             showMessage(value) {
                 this.toast = true;

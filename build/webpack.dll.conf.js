@@ -28,14 +28,14 @@ webpackConfig = {
                 loader: 'vue-loader',
                 options: vueLoaderConfig
             },
-/*             {
-                test: /iview.src.*?js$/,
-                loader: 'babel-loader'
-            },
+            /*             {
+                            test: /iview.src.*?js$/,
+                            loader: 'babel-loader'
+                        },*/
             {
                 test: /muse-ui.src.*?js$/,
                 loader: 'babel-loader'
-            }, */
+            },
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({

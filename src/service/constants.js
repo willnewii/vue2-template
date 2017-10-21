@@ -2,8 +2,10 @@
  * Created by zhangweiwei on 16/9/7.
  */
 
+const BASE_URL = 'https://anxinmuying.applinzi.com/Public/demo/?';
+
 export const method = {
-    test: "service=Album.GetList",
+    test: BASE_URL + "service=Album.GetList",
 };
 
 export const EventBus = {

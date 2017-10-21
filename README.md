@@ -1,3 +1,44 @@
+### 组件
+#### AutoListView
+- defaultStartPage:默认起始页为0
+- flag:有时你需要通知控件刷新,你可以变更该值(true 为刷新控件,false 为重置).当你并不需要控件一载入就加载数据时,也可以传入一个false.
+- 参数
+
+| 参数        | 说明    |
+| --------   | -----   |
+| url | 请求地址 |
+| type| list /grid|
+| cols| 列数,当type为grid生效|
+| notify| 类似一个trigger,修改该值,通知控件进行刷新     |
+
+- 方法
+
+| method        | 说明    |
+| --------   | -----   |
+| onItemClick | 返回当前对象 |
+
+- Parent
+| handleParam | 处理请求参数 |
+| handleResult| 处理返回结果,可能接口返回的不能直接用过list,可以通过这个函数处理一下.|
+
+
+### 风格指南
+
+##### 组件名为多个单词
+> 这样做可以避免跟现有的以及未来的 HTML 元素相冲突，因为所有的 HTML 元素名称都是单个单词的。
+
+##### 组件的 data 必须是一个函数。
+> 我们希望每个组件实例都管理其自己的数据。为了做到这一点，每个实例必须生成一个独立的数据对象。
+
+##### Prop 定义应该尽量详细。
+> 更明确的表达组件的用法.避免潜在的错误
+
+##### 如果一组 v-if + v-else 的元素类型相同，最好使用 key (比如两个 <div> 元素)。
+> 默认情况下，Vue 会尽可能高效的更新 DOM。这意味着其在相同类型的元素之间切换时，会修补以存在的元素，而不是将旧的元素移除然后在同一位置添加一个新元素。
+
+##### 元素选择器应该避免在 scoped 中出现。
+> 问题在于大量的元素和特性组合的选择器 (比如 button[data-v-f3f3eg9]) 会比类和特性组合的选择器 慢，所以应该尽可能选用类选择器。
+
 # template
 
 > A Vue.js project
@@ -26,3 +67,5 @@ webpack --profile --json > stats.json
 ```
 
 ## [code-splitting-async](https://doc.webpack-china.org/guides/code-splitting-async/#-import-)
+
+

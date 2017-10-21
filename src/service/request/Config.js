@@ -5,7 +5,7 @@ import Qs from 'qs'
 
 export default {
     method: 'post',
-    baseURL: 'https://anxinmuying.applinzi.com/Public/demo/',
+    baseURL: '',
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
     // `transformRequest`允许在请求数据发送到服务器之前对其进行更改
     // 这只适用于请求方法'PUT'，'POST'和'PATCH'
