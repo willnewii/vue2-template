@@ -29,6 +29,7 @@
                 this.showMessage(value);
             });
 
+            this.$ls.set('test','10001');
 //            this.getdata();
         },
         methods: {
