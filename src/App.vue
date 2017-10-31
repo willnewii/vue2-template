@@ -8,7 +8,7 @@
 </template>
 
 <script>
-    import {EventBus, Constants} from './service/index';
+    import {EventBus, Constants} from './assets/js/index';
     import mixins_base from './mixins/mixins-base'
     import mixins_request from './mixins/mixins-request'
 
@@ -51,5 +51,5 @@
 </script>
 
 <style lang="scss">
-    @import "style/base";
+    @import "assets/scss/base";
 </style>

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import {Constants, EventBus, API} from '../service'
+    import {Constants, EventBus, API} from '../assets/js/index'
     import mixins_base from '../mixins/mixins-base'
     import mixins_request from '../mixins/mixins-request'
 

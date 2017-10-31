@@ -39,6 +39,24 @@
 ##### 元素选择器应该避免在 scoped 中出现。
 > 问题在于大量的元素和特性组合的选择器 (比如 button[data-v-f3f3eg9]) 会比类和特性组合的选择器 慢，所以应该尽可能选用类选择器。
 
+### vue-awesome 
+- [vue-awesome-swiper](https://github.com/surmon-china/vue-awesome-swiper)
+- muse-ui
+- hotcss
+- material-design-icons
+- vue-lazyload
+
+### iphone 添加到主屏幕
+```html
+<!-- 添加到主屏幕-图标-->
+<link rel="apple-touch-icon" href="./static/icon.jpg">
+<!-- 添加到主屏幕-启动图-->
+<link rel="apple-touch-startup-image" href="./static/launch.png">
+<!-- 添加到主屏幕-全屏运行-->
+<meta name="apple-mobile-web-app-capable" content="yes">
+```
+- [Configuring WebApplications](https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html)
+
 # template
 
 > A Vue.js project

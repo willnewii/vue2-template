@@ -1,4 +1,4 @@
-import {EventBus, Constants, JsBridge} from '../service/index';
+import {EventBus, Constants, JsBridge} from '../assets/js/index';
 
 export default {
     beforeRouteEnter(to, from, next) {
