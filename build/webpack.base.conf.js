@@ -1,12 +1,12 @@
-var path = require('path')
-var fs = require('fs')
-var utils = require('./utils')
-var config = require('../config')
-var vueLoaderConfig = require('./vue-loader.conf')
-var webpack = require('webpack')
+var path = require('path');
+var fs = require('fs');
+var utils = require('./utils');
+var config = require('../config');
+var vueLoaderConfig = require('./vue-loader.conf');
+var webpack = require('webpack');
 
 function resolve(dir) {
-    return path.join(__dirname, '..', dir)
+    return path.join(__dirname, '..', dir);
 }
 
 let webpackConfig = {
@@ -70,7 +70,7 @@ if (config.dll.enable && fs.existsSync(resolve('static/dll/core-mainfest.json'))
     webpackConfig.plugins.push(new webpack.DllReferencePlugin({
         context: __dirname,
         manifest: require('../static/dll/core-mainfest.json') // 指向这个json
-    }))
+    }));
 } else {
     console.log('build without DllReferencePlugin');
 }

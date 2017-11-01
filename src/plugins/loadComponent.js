@@ -9,6 +9,9 @@ import AutoListView from "../components/AutoListView.vue";
 Vue.component(template.name, template);
 Vue.component(AutoListView.name, AutoListView);
 
+/**
+ * 按需加载,引用的UI组件
+ */
 import 'muse-ui/src/styles/base.less'
 import MuRefreshControl from "muse-ui/src/refreshControl/refreshControl.vue";
 import MuInfiniteScroll from "muse-ui/src/infiniteScroll/infiniteScroll.vue";

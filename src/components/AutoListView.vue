@@ -26,7 +26,7 @@
 </template>
 
 <script>
-    import minixs_request from '../mixins/mixins-request'
+    import minixs_request from '../assets/js/mixins/mixins-request'
 
     const defaultStartPage = 1;
 

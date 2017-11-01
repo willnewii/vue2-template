@@ -1,4 +1,4 @@
-import {Request} from '../assets/js/index';
+import {Request} from '../index';
 
 let request;
 

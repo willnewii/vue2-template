@@ -1,8 +1,13 @@
 /**
  * Created by zhangweiwei on 2017/2/27.
  */
-import Qs from 'qs'
+import Qs from 'qs';
 
+/**
+ * 1. 非简单请求,如果跨域会多一次option请求来验证是否支持跨域和支持的动作. http://www.ruanyifeng.com/blog/2016/04/cors.html
+ *
+ * 2. https://www.npmjs.com/package/qs
+ */
 export default {
     method: 'post',
     baseURL: '',
@@ -24,7 +29,7 @@ export default {
     }],
     // `paramsSerializer`是一个可选的函数，负责序列化`params`
     paramsSerializer: function (params) {
-        return Qs.stringify(params, {arrayFormat: 'brackets'})
+        return Qs.stringify(params, {arrayFormat: 'brackets'});
     },
     // `timeout`指定请求超时之前的毫秒数。
     timeout: 10000,
@@ -48,5 +53,9 @@ export default {
     },
     // `maxRedirects`定义在node.js中要遵循的重定向的最大数量。
     maxRedirects: 5,
-    handleError: true //自增参数,是否在interceptors处理错误状态.
-}
+    // 自定义参数部分
+    custom: {
+        handleError: true //是否在interceptors处理错误状态.
+    }
+
+};

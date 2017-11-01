@@ -8,13 +8,11 @@
 </template>
 
 <script>
-    import {EventBus, Constants} from './assets/js/index';
-    import mixins_base from './mixins/mixins-base'
-    import mixins_request from './mixins/mixins-request'
+    import {EventBus, Constants, mixins} from '../assets/js/index';
 
     export default {
         name: 'app',
-        mixins: [mixins_base, mixins_request],
+        mixins: [mixins.base, mixins.request],
         data() {
             return {
                 open: false,
@@ -22,19 +20,19 @@
                 toast: false,
                 toast_message: '',
                 toastTimer: null
-            }
+            };
         },
         created() {
             EventBus.$on(Constants.EventBus.showToast, value => {
                 this.showMessage(value);
             });
 
-            this.$ls.set('test','10001');
+            this.$ls.set(Constants.LocalStorage.test, '10001');
 //            this.getdata();
         },
         methods: {
             getdata() {
-                this.doRequest(Constants.method.test, null, (result) => {
+                this.doRequest(Constants.Method.test, null, (result) => {
                 });
             },
             showMessage(value) {
@@ -43,13 +41,13 @@
 
                 if (this.toastTimer) clearTimeout(this.toastTimer);
                 this.toastTimer = setTimeout(() => {
-                    this.toast = false
-                }, 2000)
+                    this.toast = false;
+                }, 2000);
             },
         }
-    }
+    };
 </script>
 
 <style lang="scss">
-    @import "assets/scss/base";
+    @import "../assets/scss/base";
 </style>

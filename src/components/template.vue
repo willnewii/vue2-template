@@ -1,5 +1,5 @@
 <template>
-    <div>{{test}}</div>
+    <div class="template">{{test}}</div>
 </template>
 
 <script>
@@ -21,5 +21,9 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+    .template {
+        background-color: #afafaf;
+        padding: 10px;
+    }
 </style>
