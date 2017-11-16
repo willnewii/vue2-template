@@ -28,7 +28,7 @@
             });
 
             this.$ls.set(Constants.LocalStorage.test, '10001');
-//            this.getdata();
+            this.getdata();
         },
         methods: {
             getdata() {

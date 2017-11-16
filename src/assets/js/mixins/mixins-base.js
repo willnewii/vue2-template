@@ -8,9 +8,13 @@ export default {
     },
     beforeRouteLeave(to, from, next) {
         //console.log('beforeRouteLeave:' + from.name);
+        this.pagePause();
         next();
     },
     methods: {
+        pagePause(){
+            this._pagePause && this._pagePause()
+        },
         pushPage(action) {
             let rou = {
                 name: action.name

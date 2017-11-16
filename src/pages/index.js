@@ -1,5 +1,6 @@
-const template = resolve => require(['./template.vue'], resolve);
+import * as Constants from '../assets/js/Constants';
 
-export default {
-    template
-}
+let page = {};
+page[Constants.PageName.template] = resolve => require(['./template.vue'], resolve);
+
+export default page;

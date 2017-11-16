@@ -11,12 +11,13 @@ export const Method = {
 
 //用于管理router中页面名称
 export const PageName = {
-    index:'index',
+    index: 'index',
+    template: 'template'
 };
 
 //用于管理router中页面名称
 export const LocalStorage = {
-    test:'test',
+    test: 'test',
 };
 
 
