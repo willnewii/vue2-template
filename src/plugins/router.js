@@ -5,7 +5,7 @@ import * as Constants from '../assets/js/Constants';
 
 function addRouter(name, meta) {
     routes.push({
-        path: '/' + name.replace('-', '/'),
+        path: '/' + name.replace(/-/g,'/'),
         name: name,
         component: Pages[name],
         meta: Object.assign({keepAlive: true}, meta)
