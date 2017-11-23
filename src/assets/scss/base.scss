@@ -25,3 +25,30 @@ pre {
   flex-direction: column;
   transition: all .45s cubic-bezier(.23, 1, .32, 1);
 }
+
+.shadow {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, .117647), 0 1px 4px rgba(0, 0, 0, .117647);
+}
+
+
+// muse-ui ------------------------------------------------------------------------
+
+//调整appbar-title 居中
+.mu-appbar {
+  //background-color: #FFFFFF !important;
+  color: #FFFFFF !important;
+  justify-content: space-between;
+  .mu-appbar-title {
+    position: absolute;
+    color: #FFFFFF;
+    left: 40px;
+    right: 40px;
+  }
+  & > .left, & > .right {
+    z-index: 1;
+  }
+}
+
+.mu-list {
+  padding: 0 ;
+}

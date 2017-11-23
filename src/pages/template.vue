@@ -1,7 +1,7 @@
 <template>
     <div class="page">
+        <app-bar :title="title" mode="test"></app-bar>
         <div class="title">测试rem-{{version}}--{{localValue}}</div>
-        <component-template></component-template>
         <auto-list-view :url="url" :flag="1">
             <template slot="item" slot-scope="props">
                 <div>{{props.item.name}}</div>
@@ -15,9 +15,11 @@
 
     import ComponentTemplate from "../components/template";
     import AutoListView from "../components/AutoListView";
+    import AppBar from "@/components/AppBar.vue";
 
     export default {
         components: {
+            AppBar,
             AutoListView,
             ComponentTemplate
         },
@@ -26,7 +28,6 @@
         data() {
             return {
                 url: Constants.Method.test,
-                title: '关于',
                 version: process.env.APP_VERSION,
                 localValue: this.$ls.get(Constants.LocalStorage.test, '-1')
             };

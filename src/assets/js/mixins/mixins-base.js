@@ -11,6 +11,11 @@ export default {
         this.pagePause();
         next();
     },
+    created() {
+        if (this.$route.meta && this.$route.meta.title) {
+            this.title = this.$route.meta.title;
+        }
+    },
     methods: {
         pagePause(){
             this._pagePause && this._pagePause()

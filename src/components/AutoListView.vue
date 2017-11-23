@@ -7,7 +7,7 @@
                         <slot name="item" :item="item" :index="index"></slot>
                     </div>
                 </mu-list-item>
-                <mu-divider/>
+                <mu-divider v-if="isNeedDivider"/>
             </template>
         </mu-list>
         <div class="grid" v-else-if="type == 'grid'">
@@ -53,6 +53,10 @@
                 default: true
             },
             isNeedLoadMore: {
+                type: Boolean,
+                default: true
+            },
+            isNeedDivider: {
                 type: Boolean,
                 default: true
             },
