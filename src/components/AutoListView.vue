@@ -93,11 +93,7 @@
         },
         computed: {
             gridstyle() {
-                let cols = parseInt(this.$el.offsetWidth / 120);
-                if (cols > 5) {
-                    cols = 5;
-                }
-                let width = this.$el.offsetWidth / cols;
+                let width = this.$el.childNodes[0].offsetWidth / cols;
                 return {
                     width: width + 'px',
                     height: width + 'px',

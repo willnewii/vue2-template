@@ -45,7 +45,7 @@
 - hotcss
 - material-design-icons
 - vue-lazyload
-
+- [vue-drag-verify 滑动解锁](https://github.com/AshleyLv/vue-drag-verify)
 ### iphone 添加到主屏幕
 ```html
 <!-- 添加到主屏幕-图标-->
