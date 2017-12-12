@@ -40,6 +40,11 @@ class Request {
     }
 
     _request(url, type, param, success, fail, finish) {
+        if(!url){
+            console.log('链接为空');
+            return ;
+        }
+        
         url = Request.isHasHttp(url) ? url : this.getOption().baseURL + '?' + url;
 
         this.getOption().method = type;

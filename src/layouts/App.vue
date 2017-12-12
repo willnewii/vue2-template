@@ -4,6 +4,8 @@
             <router-view v-if="$route.meta.keepAlive"></router-view>
         </keep-alive>
         <router-view v-if="!$route.meta.keepAlive"></router-view>
+        <mu-toast v-if="toast.show" :message="toast.message"></mu-toast>
+
     </div>
 </template>
 
@@ -17,9 +19,11 @@
             return {
                 open: false,
                 docked: false,
-                toast: false,
-                toast_message: '',
-                toastTimer: null
+                toast: {
+                    show: false,
+                    message: '',
+                    Timer: null
+                },
             };
         },
         created() {
@@ -28,20 +32,15 @@
             });
 
             this.$ls.set(Constants.LocalStorage.test, '10001');
-            this.getdata();
         },
         methods: {
-            getdata() {
-                this.doRequest(Constants.Method.test, null, (result) => {
-                });
-            },
             showMessage(value) {
-                this.toast = true;
-                this.toast_message = value.message;
+                this.toast.show = true;
+                this.toast.message = value.message;
 
-                if (this.toastTimer) clearTimeout(this.toastTimer);
-                this.toastTimer = setTimeout(() => {
-                    this.toast = false;
+                if (this.toast.Timer) clearTimeout(this.toast.Timer);
+                this.toast.Timer = setTimeout(() => {
+                    this.toast.show = false;
                 }, 2000);
             },
         }

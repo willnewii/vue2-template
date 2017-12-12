@@ -13,18 +13,9 @@
 <script>
     import {Constants, EventBus, mixins} from '../assets/js/index';
 
-    import ComponentTemplate from "../components/template";
-    import AutoListView from "../components/AutoListView";
-    import AppBar from "@/components/AppBar.vue";
-
     export default {
-        components: {
-            AppBar,
-            AutoListView,
-            ComponentTemplate
-        },
         mixins: [mixins.base, mixins.request],
-        name: 'about',
+        name: Constants.PageName.demo_list,
         data() {
             return {
                 url: Constants.Method.test,

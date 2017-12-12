@@ -12,7 +12,10 @@ export const Method = {
 //用于管理router中页面名称
 export const PageName = {
     index: 'index',
-    template: 'template'
+    template: 'template',
+    demo_list: 'demo_list',
+    demo_page: 'demo_page',
+    demo_tab: 'demo_tab'
 };
 
 //用于管理router中页面名称
