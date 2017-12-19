@@ -1,15 +1,16 @@
 import Vue from 'vue';
+import * as vue_lib from 'vue-lib';
 
 /**
  *  通用组件引用,以免懒加载重复打包.
  */
 import template from "../components/template.vue";
-import AutoListView from "../components/AutoListView.vue";
 import AppBar from "../components/AppBar.vue";
 
 Vue.component(template.name, template);
-Vue.component(AutoListView.name, AutoListView);
 Vue.component(AppBar.name, AppBar);
+
+vue_lib.install(Vue);
 
 /**
  * 按需加载,引用的UI组件

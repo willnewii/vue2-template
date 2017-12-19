@@ -1,5 +1,5 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
-var path = require('path')
+var path = require('path');
 
 module.exports = {
     build: {
@@ -23,7 +23,7 @@ module.exports = {
     },
     dev: {
         env: require('./dev.env'),
-        port: 8080,
+        port: 8088,
         autoOpenBrowser: true,
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
@@ -40,12 +40,11 @@ module.exports = {
         vendors: [
             'vue',
             'vue-router',
-            'axios',
-            'qs',
+            'vue-lib',//axios  qs
             "muse-ui/src/infiniteScroll/infiniteScroll.vue",
             "muse-ui/src/list/list.vue",
             "muse-ui/src/list/listItem.vue",
             "muse-ui/src/divider/divider.vue"
         ]
     }
-}
+};

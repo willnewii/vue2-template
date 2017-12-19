@@ -11,6 +11,10 @@ const webpack = require('webpack');
 const srcPath = path.join(__dirname, '../static/dll/');
 var env = config.build.env;
 
+function resolve(dir) {
+    return path.join(__dirname, '..', dir);
+}
+
 webpackConfig = {
     entry: {
         core: config.dll.vendors
@@ -27,7 +31,12 @@ webpackConfig = {
                 test: /\.vue$/,
                 loader: 'vue-loader',
                 options: vueLoaderConfig
-            },
+            }/*,
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                include: [resolve('node_modules/vue-lib')]
+            }*/,
             /*             {
                             test: /iview.src.*?js$/,
                             loader: 'babel-loader'

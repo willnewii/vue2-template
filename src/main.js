@@ -17,10 +17,6 @@ import {} from './plugins/filter';
 import {} from './assets/js/mixins/mixins-base';
 import {} from './assets/js/mixins/mixins-request';
 
-//拦截器
-//无使用,仅防止重复打包
-import {} from './assets/js/request/axiosInstance';
-
 /*Vue.config.productionTip = true;
  Vue.config.performance = true;*/
 

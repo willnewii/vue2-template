@@ -1,17 +1,3 @@
-import {Request} from '../index';
+import mixins_request from 'vue-lib/mixins/mixins-request';
 
-let request;
-
-export default {
-    created() {
-        request = new Request(this);
-    },
-    methods: {
-        doRequest(url, param, success, error, finish) {
-            request.post(url, param, success, error, finish)
-        },
-        doRequestGet(url, param, success, error, finish) {
-            request.get(url, param, success, error, finish)
-        }
-    }
-}
+export default mixins_request
