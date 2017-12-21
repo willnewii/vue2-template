@@ -1,3 +1,3 @@
-import mixins_request from 'vue-lib/mixins/mixins-request';
+import mixins_request from 'vue-lib/src/mixins/mixins-request';
 
 export default mixins_request

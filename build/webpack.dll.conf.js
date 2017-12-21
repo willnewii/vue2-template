@@ -31,16 +31,12 @@ webpackConfig = {
                 test: /\.vue$/,
                 loader: 'vue-loader',
                 options: vueLoaderConfig
-            }/*,
+            },
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 include: [resolve('node_modules/vue-lib')]
-            }*/,
-            /*             {
-                            test: /iview.src.*?js$/,
-                            loader: 'babel-loader'
-                        },*/
+            },
             {
                 test: /muse-ui.src.*?js$/,
                 loader: 'babel-loader'
