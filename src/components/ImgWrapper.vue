@@ -3,7 +3,7 @@
 </template>
 
 <script>
-    const img_loading = require('../assets/img/logo.png');
+    import logo from '../assets/img/logo.png';
 
     export default {
         name: 'ImgWrapper',
@@ -11,7 +11,7 @@
             return {
                 imgObj: {
                     src: this.src,
-                    loading: img_loading
+                    loading: logo
                 },
             };
         },
