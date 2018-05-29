@@ -42,7 +42,7 @@
                 name: Constants.PageName.demo_page,
             });
 
-            this.handleChange(0);
+            this.handleChange(1);
         },
         methods: {
             handleChange(value) {

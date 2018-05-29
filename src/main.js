@@ -17,6 +17,9 @@ import {} from './plugins/filter';
 import {} from './assets/js/mixins/mixins-base';
 import {} from './assets/js/mixins/mixins-request';
 
+//vuex
+import store from './vuex/store';
+
 /*Vue.config.productionTip = true;
  Vue.config.performance = true;*/
 
@@ -25,6 +28,7 @@ import App from './layouts/App.vue';
 
 new Vue({
     el: '#app',
+    store,
     router,
     template: '<App/>',
     components: {App}

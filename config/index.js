@@ -39,6 +39,7 @@ module.exports = {
         enable: true,
         vendors: [
             'vue',
+            'vuex',
             'vue-router',
             'vue-lib',//axios  qs
             "muse-ui/src/infiniteScroll/infiniteScroll.vue",
