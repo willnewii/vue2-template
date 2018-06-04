@@ -16,6 +16,11 @@ export default {
             this.title = this.$route.meta.title;
         }
     },
+    data() {
+        return {
+            title: '',
+        };
+    },
     methods: {
         pagePause(){
             this._pagePause && this._pagePause()
