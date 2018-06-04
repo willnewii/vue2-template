@@ -5,7 +5,8 @@
   "author": "诗人的咸鱼 <willnewii@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "node build/dev-server.js",
+    "_dev": "node build/dev-server.js",
+    "dev": "npm run _dev --nodll",
     "start": "node build/dev-server.js",
     "build:dll": "webpack --config ./build/webpack.dll.conf.js",
     "build:dll:report": "npm run build:dll --report",

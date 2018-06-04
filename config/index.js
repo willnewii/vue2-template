@@ -36,7 +36,6 @@ module.exports = {
         cssSourceMap: false
     },
     dll: {
-        enable: true,
         vendors: [
             'vue',
             'vuex',
