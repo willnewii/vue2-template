@@ -1,11 +1,9 @@
 <template>
     <div id="app">
-        <keep-alive>
-            <router-view v-if="$route.meta.keepAlive"></router-view>
+        <keep-alive :include="keepAliveArray">
+            <router-view ></router-view>
         </keep-alive>
-        <router-view v-if="!$route.meta.keepAlive"></router-view>
         <mu-toast v-if="toast.show" :message="toast.message"></mu-toast>
-
     </div>
 </template>
 
@@ -17,8 +15,7 @@
         mixins: [mixins.base, mixins.request],
         data() {
             return {
-                open: false,
-                docked: false,
+                keepAliveArray: Constants.keepAlive,
                 toast: {
                     show: false,
                     message: '',

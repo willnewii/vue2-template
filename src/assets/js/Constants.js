@@ -18,7 +18,12 @@ export const PageName = {
     demo_tab: 'demo_tab'
 };
 
-//用于管理router中页面名称
+//用于管理是否需要使用keepAlive缓存
+export const keepAlive = [
+    PageName.index
+];
+
+//用于管理LocalStorage key
 export const LocalStorage = {
     test: 'test',
 };

@@ -31,7 +31,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "../assets/scss/px2rem";
+    @import "../assets/scss/params";
 
     .title {
         display: block;

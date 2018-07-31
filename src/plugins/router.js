@@ -42,12 +42,11 @@ let router = new Router({
     routes
 });
 
-router.beforeEach((to, from, next) => {
+
+router.afterEach((to, from) => {
     if (to.meta && to.meta.title) {
         document.title = to.meta.title;
     }
-
-    next();
 });
 
 export default router;
