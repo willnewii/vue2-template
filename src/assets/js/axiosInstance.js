@@ -27,11 +27,15 @@ axiosInstance.interceptors.response.use((response) => {
         });
     }
 }, (error) => {
-    if (error.message === 'Network Error') {//网络异常
-        console.log(error.message, '请检查网络连接是否正常.');
-        return;
+    console.log(error);
+    let result = {};
+    if (!error.response) {
+        result.message = '网络好像出了点问题  😱';
+    } else if (error.response.status >= 500) {
+        result.message = '服务器崩溃了  😖';
     }
-    console.log(error.message);
+
+    return Promise.reject(result);
 });
 
 export default axiosInstance;

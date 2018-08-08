@@ -1,5 +1,3 @@
-@import "px2rem";
-
 $primaryColor: #2196f3;
 
 @mixin line-clamp($lines:3) {
@@ -13,3 +11,11 @@ $primaryColor: #2196f3;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
+
+//px2rem 方法
+@function px2rem($px) {
+  @return $px*320/$designWidth/20 + rem;
+}
+
+$designWidth: 375;
+//px2rem 方法
