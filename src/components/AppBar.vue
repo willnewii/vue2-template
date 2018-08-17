@@ -1,6 +1,9 @@
 <template>
-    <mu-appbar :title="title" v-if="showAppBar" titleClass="titleClass">
-        <mu-icon-button :icon="icon" slot="left" @click="goBack"></mu-icon-button>
+    <mu-appbar :class="isDark ? 'dark-appbar' : 'light-appbar'" :title="title" v-if="showAppBar"
+               :textColor="isDark ? '#0d1733' : '#0d1733'" :z-depth="0">
+        <mu-button icon color="primary" slot="left" @click="goBack">
+            <mu-icon value="arrow_back"></mu-icon>
+        </mu-button>
         <template slot="right" v-if="this.mode !== 'test'">
             <mu-icon-button v-if="showSearch" icon="search" slot="right" @click="goSearch"></mu-icon-button>
             <slot name="right"></slot>
@@ -26,7 +29,11 @@
             showSearch: {
                 type: Boolean,
                 default: true
-            }
+            },
+            isDark: {
+                type: Boolean,
+                default: false
+            },
         },
         data() {
             return {
@@ -75,8 +82,24 @@
 </script>
 
 <style lang="scss">
-    .titleClass {
+    @import "../assets/scss/params";
+
+    .dark-appbar {
+        width: 100%;
+        background-color: $bg-dark !important;
+        color: #FFFFFF !important;
+        border-bottom: 0 !important;
+    }
+
+    .dark-titleClass {
         text-align: center;
-        color: #333;
+        color: #FFFFFF;
+    }
+
+    .light-appbar {
+        width: 100%;
+        color: $fontColor !important;
+        background-color: #FFFFFF !important;
+        border-bottom: $bg-gray solid px2rem(1);
     }
 </style>

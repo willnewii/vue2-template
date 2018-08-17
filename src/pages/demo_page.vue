@@ -1,24 +1,24 @@
 <template>
     <div class="page">
         <app-bar :title="title" mode="test"></app-bar>
-        <mu-raised-button label="测试toast" primary fullWidth @click="toast"/>
+        <mu-button color="primary" fullWidth @click="toast">测试toast</mu-button>
 
         <div>{{count}}</div>
         <div>{{page_count}}</div>
 
-        <mu-raised-button label="vuex - app - count" primary @click="action_appcount"/>
-        <mu-raised-button label="vuex - page - count" primary @click="action_pagecount"/>
+        <mu-button color="primary" fullWidth @click="action_appcount">vuex - app - count</mu-button>
+        <mu-button color="primary" fullWidth @click="action_pagecount">vuex - page - count</mu-button>
     </div>
 </template>
 
 <script>
     import {Constants, EventBus, mixins} from '../assets/js/index';
-    import MuRaisedButton from "muse-ui/src/raisedButton/raisedButton";
+
     import {mapGetters, mapActions} from 'vuex';
     import * as types from '../vuex/mutation-types';
 
     export default {
-        components: {MuRaisedButton},
+        components: {},
         mixins: [mixins.base, mixins.request],
         name: Constants.PageName.demo_page,
         data() {
