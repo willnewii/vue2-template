@@ -23,7 +23,7 @@ module.exports = {
     },
     dev: {
         env: require('./dev.env'),
-        port: 8088,
+        port: 8089,
         autoOpenBrowser: true,
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
@@ -41,10 +41,6 @@ module.exports = {
             'vuex',
             'vue-router',
             'vue-lib',//axios  qs
-            "muse-ui/src/infiniteScroll/infiniteScroll.vue",
-            "muse-ui/src/list/list.vue",
-            "muse-ui/src/list/listItem.vue",
-            "muse-ui/src/divider/divider.vue"
         ]
     }
 };

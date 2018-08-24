@@ -39,6 +39,10 @@
                 name: Constants.PageName.demo_list,
             });
             this.menus.push({
+                title: '列表2',
+                name: Constants.PageName.demo_list2,
+            });
+            this.menus.push({
                 title: '页面',
                 name: Constants.PageName.demo_page,
             });
