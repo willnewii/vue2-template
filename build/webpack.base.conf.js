@@ -11,7 +11,6 @@ function resolve(dir) {
 
 let webpackConfig = {
     entry: {
-        // app: ['./src/main.js','vue-baidu-map']
         app: './src/main.js'
     },
     output: {
@@ -25,7 +24,7 @@ let webpackConfig = {
         extensions: ['.js', '.vue', '.json'],
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
-            '@': resolve('src')
+            '@': resolve('src'),
         }
     },
     module: {
@@ -33,9 +32,6 @@ let webpackConfig = {
             test: /\.vue$/,
             loader: 'vue-loader',
             options: vueLoaderConfig
-        }, {
-            test: /muse-ui.src.*?js$/,
-            loader: 'babel-loader'
         }, {
             test: /\.js$/,
             loader: 'babel-loader',
@@ -60,7 +56,8 @@ let webpackConfig = {
     }
 };
 
-if (!process.env.npm_config_nodll && fs.existsSync(resolve('static/dll/core-mainfest.json'))) {
+
+if (process.env.ENV_DLL && fs.existsSync(resolve('static/dll/core-mainfest.json'))) {
     console.log('build with DllReferencePlugin');
     webpackConfig.plugins = [];
     webpackConfig.plugins.push(new webpack.DllReferencePlugin({

@@ -35,11 +35,13 @@ var webpackConfig = merge(baseWebpackConfig, {
     plugins: [
         // http://vuejs.github.io/vue-loader/en/workflow/production.html
         new webpack.DefinePlugin({
-            'process.env': env
+            'process.env': process.env.ENV_DEV ? config.dev.env : env
         }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
-                warnings: false
+                warnings: false,
+                drop_debugger: true,
+                drop_console: true
             },
             sourceMap: true
         }),
@@ -52,20 +54,23 @@ var webpackConfig = merge(baseWebpackConfig, {
         // duplicated CSS from different components can be deduped.
         new OptimizeCSSPlugin({
             cssProcessorOptions: {
-                safe: true
+                safe: true,
+                autoprefixer: false
             }
         }),
         // generate dist index.html with correct asset hash for caching.
         // you can customize output by editing /index.html
         // see https://github.com/ampedandwired/html-webpack-plugin
+        // https://github.com/jaketrent/html-webpack-template
         new HtmlWebpackPlugin({
             filename: config.build.index,
             template: 'index.html',
             inject: true,
+            talkingDataid: '626F16F837524527834BF2DE13C7258A',
             minify: {
                 removeComments: true,
                 collapseWhitespace: true,
-                removeAttributeQuotes: true
+                removeAttributeQuotes: true,
                 // more options:
                 // https://github.com/kangax/html-minifier#options-quick-reference
             },
@@ -76,7 +81,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         new webpack.optimize.CommonsChunkPlugin({
             name: ['vendor'],
             minChunks: function (module, count) {
-                if (module.resource) {
+                /*if (module.resource) {
                     console.log(module.resource, module.resource.indexOf(
                         path.join(__dirname, '../node_modules')
                     ), module.resource.indexOf(
@@ -90,7 +95,7 @@ var webpackConfig = merge(baseWebpackConfig, {
                             ) === 0
                         )
                     ), count);
-                }
+                }*/
                 // any required modules inside node_modules are extracted to vendor
                 return (
                     module.resource && /\.(js|vue)$/.test(module.resource) && (
@@ -137,7 +142,7 @@ if (config.build.productionGzip) {
 }
 
 if (config.build.bundleAnalyzerReport) {
-    var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+    let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
     webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 }
 

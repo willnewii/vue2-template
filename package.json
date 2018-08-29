@@ -5,13 +5,13 @@
   "author": "诗人的咸鱼 <willnewii@gmail.com>",
   "private": true,
   "scripts": {
-    "_dev": "node build/dev-server.js",
-    "dev": "npm run _dev --nodll",
-    "start": "node build/dev-server.js",
+    "dev": "cross-env ENV_DLL=true node build/dev-server.js",
+    "build": "cross-env ENV_DLL=true node build/build.js",
+    "build:test": "cross-env ENV_DLL=true ENV_DEV=true node build/build.js",
     "build:dll": "webpack --config ./build/webpack.dll.conf.js",
-    "build:dll:report": "npm run build:dll --report",
-    "build": "node build/build.js",
-    "build:report": "npm run build --report",
+    "start": "node build/dev-server.js",
+    "build:dll:report": "cross-env ENV_REPORT=true npm run build:dll",
+    "build:report": "cross-env ENV_DLL=true ENV_REPORT=true npm run build",
     "build:stats": "webpack --config ./build/webpack.prod.conf.js --profile --json > stats.json"
   },
   "dependencies": {
@@ -39,6 +39,7 @@
     "compression-webpack-plugin": "^0.4.0",
     "connect-history-api-fallback": "^1.5.0",
     "copy-webpack-plugin": "^4.5.2",
+    "cross-env": "^5.2.0",
     "css-loader": "^0.28.11",
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.16.3",
