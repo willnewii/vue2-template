@@ -1,5 +1,11 @@
 $primaryColor: #2196f3;
 
+$fontColor: #0d1733;
+$fontColor-gray: #b6b9c2;
+
+$bg-gray: #fafafa;
+$bg-dark: #0d1733;
+
 @mixin line-clamp($lines:3) {
   -webkit-line-clamp: $lines;
   -webkit-box-orient: vertical;

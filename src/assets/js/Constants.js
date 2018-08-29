@@ -14,6 +14,7 @@ export const PageName = {
     index: 'index',
     template: 'template',
     demo_list: 'demo_list',
+    demo_list2: 'demo_list2',
     demo_page: 'demo_page',
     demo_tab: 'demo_tab'
 };

@@ -3,7 +3,7 @@
         <keep-alive :include="keepAliveArray">
             <router-view ></router-view>
         </keep-alive>
-        <mu-toast v-if="toast.show" :message="toast.message"></mu-toast>
+        <mu-snackbar :open="toast.show" position="bottom">{{toast.message}}</mu-snackbar>
     </div>
 </template>
 

@@ -27,6 +27,12 @@ let routes = [{
             meta: {keepAlive: true,title: '列表示例页面'},
         },
         {
+            path: Constants.PageName.demo_list2,
+            name: Constants.PageName.demo_list2,
+            component: Pages[Constants.PageName.demo_list2],
+            meta: {keepAlive: true,title: '列表示例页面'},
+        },
+        {
             path: Constants.PageName.demo_page,
             name: Constants.PageName.demo_page,
             component: Pages[Constants.PageName.demo_page],

@@ -33,14 +33,16 @@ pre {
 
 // muse-ui ------------------------------------------------------------------------
 
+.mu-appbar {
+  width: 100%;
+}
+
+
 //调整appbar-title 居中
 .mu-appbar {
-  //background-color: #FFFFFF !important;
-  color: #FFFFFF !important;
   justify-content: space-between;
   .mu-appbar-title {
     position: absolute;
-    color: #FFFFFF;
     left: 40px;
     right: 40px;
   }

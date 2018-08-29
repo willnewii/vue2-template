@@ -17,17 +17,17 @@ Vue.component(AppBar.name, AppBar);
 /**
  * 按需加载,引用的UI组件
  */
-import 'muse-ui/src/styles/base.less';
 import 'material-design-icons/iconfont/material-icons.css';
 
-import MuAppbar from "muse-ui/src/appBar/appBar.vue";
-import MuIconButton from "muse-ui/src/iconButton/iconButton.vue";
-import MuBottomNav from "muse-ui/src/bottomNav/bottomNav";
-import MuBottomNavItem from "muse-ui/src/bottomNav/bottomNavItem";
-import MuToast from "muse-ui/src/toast/toast";
+import 'muse-ui/lib/styles/base.less';
+import {AppBar as MuAppBar, Button, Icon, BottomNav, Snackbar, Progress, Divider, List} from 'muse-ui';
+import 'muse-ui/lib/styles/theme.less';
 
-Vue.component(MuAppbar.name, MuAppbar);
-Vue.component(MuIconButton.name, MuIconButton);
-Vue.component(MuBottomNav.name, MuBottomNav);
-Vue.component(MuBottomNavItem.name, MuBottomNavItem);
-Vue.component(MuToast.name, MuToast);
+Vue.use(MuAppBar);
+Vue.use(Button);
+Vue.use(Icon);
+Vue.use(BottomNav);
+Vue.use(Snackbar);
+Vue.use(Progress);
+Vue.use(Divider);
+Vue.use(List);

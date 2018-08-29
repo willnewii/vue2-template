@@ -1,12 +1,14 @@
 <template>
     <div class="page">
         <app-bar :title="title" mode="test"></app-bar>
-        <div class="title">测试rem-{{version}}--{{localValue}}</div>
-        <auto-list-view :url="url" :flag="1" :isNeedLoadRefresh="true">
-            <template slot="item" slot-scope="props">
-                <div>{{props.item.name}}</div>
-            </template>
-        </auto-list-view>
+        <div style="overflow-y: scroll;height: 100%;">
+            <div class="title">测试rem-{{version}}--{{localValue}}</div>
+            <auto-list-view :url="url" :flag="1" :isScroll="false">
+                <template slot="item" slot-scope="props">
+                    <div>{{props.item.name}}</div>
+                </template>
+            </auto-list-view>
+        </div>
     </div>
 </template>
 

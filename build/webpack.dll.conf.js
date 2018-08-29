@@ -1,12 +1,11 @@
-process.env.NODE_ENV = 'production'
+process.env.NODE_ENV = 'production';
 
 const path = require('path');
 
-var config = require('../config')
-var utils = require('./utils')
-var vueLoaderConfig = require('./vue-loader.conf')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+var config = require('../config');
+var vueLoaderConfig = require('./vue-loader.conf');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 const webpack = require('webpack');
 const srcPath = path.join(__dirname, '../static/dll/');
 var env = config.build.env;
@@ -36,10 +35,6 @@ webpackConfig = {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 include: [resolve('node_modules/vue-lib')]
-            },
-            {
-                test: /muse-ui.src.*?js$/,
-                loader: 'babel-loader'
             },
             {
                 test: /\.css$/,
@@ -87,9 +82,11 @@ webpackConfig = {
     ]
 }
 
-if (process.env.npm_config_report) {
+if (config.build.bundleAnalyzerReport) {
     var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-    webpackConfig.plugins.push(new BundleAnalyzerPlugin())
+    webpackConfig.plugins.push(new BundleAnalyzerPlugin({
+        analyzerPort: 9999
+    }))
 }
 
 module.exports = webpackConfig;
