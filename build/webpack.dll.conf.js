@@ -1,20 +1,19 @@
-process.env.NODE_ENV = 'production';
-
 const path = require('path');
-
+var utils = require('./utils');
 var config = require('../config');
-var vueLoaderConfig = require('./vue-loader.conf');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 const webpack = require('webpack');
 const srcPath = path.join(__dirname, '../static/dll/');
-var env = config.build.env;
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir);
 }
 
 webpackConfig = {
+    mode: "production",
     entry: {
         core: config.dll.vendors
     },
@@ -25,22 +24,15 @@ webpackConfig = {
         extensions: ['.js', '.vue', '.json']
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',
-                options: vueLoaderConfig
             },
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 include: [resolve('node_modules/vue-lib')]
-            },
-            {
-                test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                    use: "css-loader"
-                })
             },
             {
                 test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
@@ -57,22 +49,38 @@ webpackConfig = {
         filename: '[name].dll.js', // 输出的文件，将会根据entry命名为vendor.dll.js
         library: '[name]_library' // 暴露出的全局变量名
     },
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: config.build.productionSourceMap,
+                uglifyOptions: {
+                    warnings: false
+                }
+            }),
+            new OptimizeCSSPlugin({
+                cssProcessorOptions: config.build.productionSourceMap
+                    ? {safe: true, map: {inline: false}}
+                    : {safe: true}
+            }),
+        ],
+        splitChunks: {
+            cacheGroups: {
+                styles: {
+                    name: 'dll',
+                    test: /\.vue$/,
+                    chunks: 'all',
+                    enforce: true
+                }
+            }
+        }
+    },
     plugins: [
-        new webpack.DefinePlugin({
-            'process.env': env
-        }),
-        new ExtractTextPlugin({
-            filename: '[name].dll.css'
-        }),
-        new OptimizeCSSPlugin({
-            cssProcessorOptions: {
-                safe: true
-            }
-        }),
-        new webpack.optimize.UglifyJsPlugin({ // uglifjs压缩
-            compress: {
-                warnings: false
-            }
+        new VueLoaderPlugin(),
+        new MiniCssExtractPlugin({
+            filename: utils.assetsPath('css/[name].[contenthash].dll.css'),
+            //filename: utils.assetsPath('css/[name].[contenthash].css'),
         }),
         new webpack.DllPlugin({
             path: path.join(srcPath, '[name]-mainfest.json'), // 描述依赖对应关系的json文件
@@ -80,13 +88,13 @@ webpackConfig = {
             context: __dirname // 执行的上下文环境，对之后DllReferencePlugin有用
         })
     ]
-}
+};
 
 if (config.build.bundleAnalyzerReport) {
-    var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+    var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
     webpackConfig.plugins.push(new BundleAnalyzerPlugin({
         analyzerPort: 9999
-    }))
+    }));
 }
 
 module.exports = webpackConfig;

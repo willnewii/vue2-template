@@ -2,7 +2,7 @@ var path = require('path');
 var fs = require('fs');
 var utils = require('./utils');
 var config = require('../config');
-var vueLoaderConfig = require('./vue-loader.conf');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 var webpack = require('webpack');
 
 function resolve(dir) {
@@ -16,9 +16,7 @@ let webpackConfig = {
     output: {
         path: config.build.assetsRoot,
         filename: '[name].js',
-        publicPath: process.env.NODE_ENV === 'production' ?
-            config.build.assetsPublicPath :
-            config.dev.assetsPublicPath
+        publicPath: config.dev.assetsPublicPath
     },
     resolve: {
         extensions: ['.js', '.vue', '.json'],
@@ -31,7 +29,6 @@ let webpackConfig = {
         rules: [{
             test: /\.vue$/,
             loader: 'vue-loader',
-            options: vueLoaderConfig
         }, {
             test: /\.js$/,
             loader: 'babel-loader',
@@ -53,13 +50,15 @@ let webpackConfig = {
             }
         }
         ]
-    }
+    },
+    plugins: [
+        new VueLoaderPlugin()
+    ]
 };
 
 
 if (process.env.ENV_DLL && fs.existsSync(resolve('static/dll/core-mainfest.json'))) {
     console.log('build with DllReferencePlugin');
-    webpackConfig.plugins = [];
     webpackConfig.plugins.push(new webpack.DllReferencePlugin({
         context: __dirname,
         manifest: require('../static/dll/core-mainfest.json') // 指向这个json

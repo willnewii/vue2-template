@@ -5,6 +5,7 @@
 
         <div>{{count}}</div>
         <div>{{page_count}}</div>
+        <div>{{env}}</div>
 
         <mu-button color="primary" fullWidth @click="action_appcount">vuex - app - count</mu-button>
         <mu-button color="primary" fullWidth @click="action_pagecount">vuex - page - count</mu-button>
@@ -22,7 +23,9 @@
         mixins: [mixins.base, mixins.request],
         name: Constants.PageName.demo_page,
         data() {
-            return {};
+            return {
+                env: process.env.NODE_ENV
+            };
         },
         computed: {
             ...mapGetters({

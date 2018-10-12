@@ -1,5 +1,4 @@
 require('./check-versions')();
-process.env.NODE_ENV = 'production';
 
 var ora = require('ora');
 var rm = require('rimraf');
@@ -35,6 +34,6 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
             '  Tip: built files are meant to be served over an HTTP server.\n' +
             '  Opening index.html over file:// won\'t work.\n'
         ));
-        exec('open ' + config.build.assetsRoot);
+        //exec('open ' + config.build.assetsRoot);
     });
 });
