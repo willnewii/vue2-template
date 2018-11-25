@@ -1,17 +1,17 @@
-var path = require('path');
-var utils = require('./utils');
-var webpack = require('webpack');
-var config = require('../config');
-var merge = require('webpack-merge');
-var baseWebpackConfig = require('./webpack.base.conf');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
+const path = require('path');
+const utils = require('./utils');
 
-var env = config.build.env;
+const config = require('../config');
+const merge = require('webpack-merge');
+const baseWebpackConfig = require('./webpack.base.conf');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-var webpackConfig = merge(baseWebpackConfig, {
+const webpackConfig = merge(baseWebpackConfig, {
+    mode: "production",
     module: {
         rules: utils.styleLoaders({
             sourceMap: config.build.productionSourceMap,
@@ -30,43 +30,54 @@ var webpackConfig = merge(baseWebpackConfig, {
          * chunk的hash值只有在require.ensure中引入的模块发生变化,hash值才会改变
          * 注意:对于不是在ensure方法中引入的模块,此属性不会生效,只能用CommonsChunkPlugin插件来提取
          * */
-        chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+        chunkFilename: utils.assetsPath('js/[id].[chunkhash].js'),
+        publicPath: config.build.assetsPublicPath
+    },
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: config.build.productionSourceMap,
+                uglifyOptions: {
+                    warnings: false,
+                    compress: {
+                        drop_console: true,
+                        drop_debugger: true,
+                    }
+                }
+            }),
+            new OptimizeCSSPlugin({
+                cssProcessorOptions: config.build.productionSourceMap
+                    ? {safe: true, map: {inline: false}}
+                    : {safe: true}
+            }),
+        ],
+        splitChunks: {
+            cacheGroups: {
+                styles: {
+                    name: 'styles',
+                    test: /\.(sass|scss|css)(\?.*)?$/,
+                    chunks: 'all',
+                    enforce: true
+                }
+            }
+        }
     },
     plugins: [
-        // http://vuejs.github.io/vue-loader/en/workflow/production.html
-        new webpack.DefinePlugin({
-            'process.env': process.env.ENV_DEV ? config.dev.env : env
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false,
-                drop_debugger: true,
-                drop_console: true
-            },
-            sourceMap: true
-        }),
-        // extract css into its own file
-        new ExtractTextPlugin({
+        new MiniCssExtractPlugin({
             filename: utils.assetsPath('css/[name].[contenthash].css'),
-            allChunks: true
-        }),
-        // Compress extracted CSS. We are using this plugin so that possible
-        // duplicated CSS from different components can be deduped.
-        new OptimizeCSSPlugin({
-            cssProcessorOptions: {
-                safe: true,
-                autoprefixer: false
-            }
         }),
         // generate dist index.html with correct asset hash for caching.
         // you can customize output by editing /index.html
         // see https://github.com/ampedandwired/html-webpack-plugin
-        // https://github.com/jaketrent/html-webpack-template
+        // https://github.com/jaketrent/html-webpack-template/blob/legacy/index.html
         new HtmlWebpackPlugin({
             filename: config.build.index,
             template: 'index.html',
             inject: true,
-            talkingDataid: '626F16F837524527834BF2DE13C7258A',
+            talkingDataid: '',
+            prod: true,
             minify: {
                 removeComments: true,
                 collapseWhitespace: true,
@@ -76,41 +87,6 @@ var webpackConfig = merge(baseWebpackConfig, {
             },
             // necessary to consistently work with multiple chunks via CommonsChunkPlugin
             chunksSortMode: 'dependency'
-        }),
-        // split vendor js into its own file
-        new webpack.optimize.CommonsChunkPlugin({
-            name: ['vendor'],
-            minChunks: function (module, count) {
-                /*if (module.resource) {
-                    console.log(module.resource, module.resource.indexOf(
-                        path.join(__dirname, '../node_modules')
-                    ), module.resource.indexOf(
-                        path.join(__dirname, '../src/components/')
-                    ), (
-                        module.resource && /\.(js|vue)$/.test(module.resource) && (
-                            module.resource.indexOf(
-                                path.join(__dirname, '../node_modules')
-                            ) === 0 || module.resource.indexOf(
-                                path.join(__dirname, '../src/components/')
-                            ) === 0
-                        )
-                    ), count);
-                }*/
-                // any required modules inside node_modules are extracted to vendor
-                return (
-                    module.resource && /\.(js|vue)$/.test(module.resource) && (
-                        module.resource.indexOf(
-                            path.join(__dirname, '../node_modules')
-                        ) === 0
-                    )
-                );
-            }
-        }),
-        // extract webpack runtime and module manifest to its own file in order to
-        // prevent vendor hash from being updated whenever app bundle is updated
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'manifest',
-            chunks: ['vendor']
         }),
         // copy custom static assets
         new CopyWebpackPlugin([
@@ -128,7 +104,7 @@ if (config.build.productionGzip) {
 
     webpackConfig.plugins.push(
         new CompressionWebpackPlugin({
-            asset: '[path].gz[query]',
+            filename: '[path].gz[query]',
             algorithm: 'gzip',
             test: new RegExp(
                 '\\.(' +

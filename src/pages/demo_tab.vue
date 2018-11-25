@@ -47,7 +47,7 @@
                 name: Constants.PageName.demo_page,
             });
 
-            this.handleChange(1);
+            this.handleChange(2);
         },
         methods: {
             handleChange(value) {

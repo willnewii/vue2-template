@@ -33,3 +33,15 @@ new Vue({
     template: '<App/>',
     components: {App}
 });
+
+// offline网络连接事件
+window.addEventListener("offline", function () {
+    alert("网络连接已断开");
+});
+
+
+/*window.addEventListener("load", function () {
+    navigator.serviceWorker.register('../sw.js').then(function (reg) {
+        console.log("注册成功");
+    });
+});*/
