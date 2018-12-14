@@ -1,7 +1,7 @@
 /**
  * Created by zhangweiwei on 16/9/7.
  */
-
+const prefix = process.env.NODE_ENV === 'development' ? "test1-" : '';
 const BASE_URL = 'https://anxinmuying.applinzi.com/Public/demo/?';
 
 //用于管理项目请求地址
