@@ -21,7 +21,7 @@ module.exports = {
         bundleAnalyzerReport: process.env.ENV_REPORT
     },
     dev: {
-        port: 8088,
+        port: 8099,
         autoOpenBrowser: true,
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',

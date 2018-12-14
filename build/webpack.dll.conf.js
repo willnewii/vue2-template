@@ -30,6 +30,10 @@ webpackConfig = {
                 loader: 'vue-loader',
             },
             {
+                test: /\.css$/,
+                loader: [MiniCssExtractPlugin.loader, 'css-loader'],
+            },
+            {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 include: [resolve('node_modules/vue-lib')]
@@ -68,7 +72,7 @@ webpackConfig = {
         splitChunks: {
             cacheGroups: {
                 styles: {
-                    name: 'dll',
+                    name: 'core',
                     test: /\.vue$/,
                     chunks: 'all',
                     enforce: true
@@ -79,8 +83,7 @@ webpackConfig = {
     plugins: [
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
-            filename: utils.assetsPath('css/[name].[contenthash].dll.css'),
-            //filename: utils.assetsPath('css/[name].[contenthash].css'),
+            filename: utils.assetsPath('[name].dll.css'),
         }),
         new webpack.DllPlugin({
             path: path.join(srcPath, '[name]-mainfest.json'), // 描述依赖对应关系的json文件

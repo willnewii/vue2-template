@@ -2,14 +2,14 @@ var path = require('path');
 var config = require('../config');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-exports.assetsPath = function (_path) {
-    var assetsSubDirectory = process.env.NODE_ENV === 'production'
-        ? config.build.assetsSubDirectory
-        : config.dev.assetsSubDirectory;
+exports.assetsPath = function(_path) {
+    var assetsSubDirectory = process.env.NODE_ENV === 'production' ?
+        config.build.assetsSubDirectory :
+        config.dev.assetsSubDirectory;
     return path.posix.join(assetsSubDirectory, _path);
 };
 
-exports.cssLoaders = function (options) {
+exports.cssLoaders = function(options) {
     options = options || {};
 
     var cssLoader = {
@@ -22,7 +22,7 @@ exports.cssLoaders = function (options) {
 
     // generate loader string to be used with extract text plugin
     function generateLoaders(loader, loaderOptions) {
-        var loaders = [cssLoader];
+        var loaders = [cssLoader, 'postcss-loader'];
         if (loader) {
             loaders.push({
                 loader: loader + '-loader',
@@ -46,7 +46,9 @@ exports.cssLoaders = function (options) {
         css: generateLoaders(),
         postcss: generateLoaders(),
         less: generateLoaders('less'),
-        sass: generateLoaders('sass', {indentedSyntax: true}),
+        sass: generateLoaders('sass', {
+            indentedSyntax: true
+        }),
         scss: generateLoaders('sass'),
         stylus: generateLoaders('stylus'),
         styl: generateLoaders('stylus')
@@ -54,7 +56,7 @@ exports.cssLoaders = function (options) {
 };
 
 // Generate loaders for standalone style files (outside of .vue)
-exports.styleLoaders = function (options) {
+exports.styleLoaders = function(options) {
     var output = [];
     var loaders = exports.cssLoaders(options);
     for (var extension in loaders) {
