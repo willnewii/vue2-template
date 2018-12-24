@@ -13,7 +13,7 @@ module.exports = merge(baseWebpackConfig, {
     devServer: {
         host: config.dev.host,
         port: config.dev.port,
-        public: `localhost:${config.dev.port}`,
+        // public: `localhost:${config.dev.port}`,
         quiet: true,
         overlay: {
             warnings: false,
