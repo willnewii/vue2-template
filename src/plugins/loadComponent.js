@@ -5,6 +5,20 @@ import axiosOption from 'vue-lib/src/request/axiosOption';
 Vue.use(vue_lib, {
     axiosOption
 });
+
+
+/*作者：MarkMan
+链接：https://juejin.im/post/5c106485e51d450e657571a6
+    来源：掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+let contexts = require.context('.', false, /\.vue$/)
+contexts.keys().forEach(component => {
+    let componentEntity = contexts(component).default
+    // 使用内置的组件名称 进行全局组件注册
+    Vue.component(componentEntity.name, componentEntity)
+})*/
+
 /**
  *  通用组件引用,以免懒加载重复打包.
  */
