@@ -16,7 +16,7 @@
 ##### 元素选择器应该避免在 scoped 中出现。
 > 问题在于大量的元素和特性组合的选择器 (比如 button[data-v-f3f3eg9]) 会比类和特性组合的选择器 慢，所以应该尽可能选用类选择器。
 
-### vue-awesome 
+### vue-awesome
 - [vue-awesome-swiper](https://github.com/surmon-china/vue-awesome-swiper)
 - muse-ui
 - hotcss
@@ -64,3 +64,9 @@ webpack --profile --json > stats.json
 ## [code-splitting-async](https://doc.webpack-china.org/guides/code-splitting-async/#-import-)
 
 
+```js
+//add vue-cli-plugin-dll
+if (process.env.report == 'true') {
+                webpackConfig.plugins.push(new BundleAnalyzerPlugin());
+            }
+```

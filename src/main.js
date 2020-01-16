@@ -27,12 +27,11 @@ import store from './vuex/store';
 import App from './layouts/App.vue';
 
 new Vue({
-    el: '#app',
-    store,
     router,
-    template: '<App/>',
-    components: {App}
-});
+    store,
+    render: h => h(App)
+}).$mount('#app')
+
 
 // offline网络连接事件
 window.addEventListener("offline", function () {
