@@ -6,16 +6,16 @@ import Vue from 'vue';
 import router from './plugins/router';
 
 // 注册全局组件
-import {} from './plugins/loadComponent';
+import './plugins/loadComponent';
 
 // localstorage
-import {} from './plugins/localstorage';
+import './plugins/localstorage';
 
 // 过滤器
-import {} from './plugins/filter';
+import './plugins/filter';
 
-import {} from './assets/js/mixins/mixins-base';
-import {} from './assets/js/mixins/mixins-request';
+import './assets/js/mixins/mixins-base';
+import './assets/js/mixins/mixins-request';
 
 //vuex
 import store from './vuex/store';
@@ -30,7 +30,7 @@ new Vue({
     router,
     store,
     render: h => h(App)
-}).$mount('#app')
+}).$mount('#app');
 
 
 // offline网络连接事件

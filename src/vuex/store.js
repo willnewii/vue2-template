@@ -6,10 +6,14 @@ import page from './modules/page';
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
     modules: {
         app,
         page
     },
     strict: process.env.NODE_ENV !== 'production'
 });
+
+// store.dispatch(APP.init);
+
+export default store;
